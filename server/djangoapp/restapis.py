@@ -20,7 +20,14 @@ def get_request(endpoint, **kwargs):
 
     request_url = backend_url + endpoint + "?" + params
 
-    return request_url
+    print("GET from {} ".format(request_url))
+    try:
+        # Call get method of requests library with URL and parameters
+        response = requests.get(request_url)
+        return response.json()
+    except:
+        # If any error occurs
+        print("Network exception occurred")
 
 
 def get_data(request_url):
